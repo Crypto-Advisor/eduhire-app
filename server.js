@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const passport = require('passport')
 
 /**
  * -------------- GENERAL SETUP ----------------
@@ -17,6 +18,10 @@ require('./config/database');
 
 // Must first load the models
 require('./models/user');
+
+require('./config/passport')(passport);
+
+app.use(passport.initialize());
 
 // Instead of using body-parser middleware, use the new Express implementation of the same thing
 app.use(express.json());

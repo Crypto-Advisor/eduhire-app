@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
-const router = require('exress').Router();
+const { token } = require('morgan');
+const router = require('express').Router();   
 const User = mongoose.model('User');
 const passport = require('passport');
 const utils = require('../utils');
 
-router.get('/admin', (req, res, next) =>{
-
+router.get('/admin', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
+    res.status(200).json({ success: true, msg: 'you are authorized!' });
 })
 
-router.post('login', function(req, res, next){
+router.post('/login', function(req, res, next){
     User.findOne({ username: req.body.username })
         .then((user) =>{
             if(!user){
@@ -37,7 +38,8 @@ router.post('/register', function(req, res, next){
     const newUser = new User({
         username: req.body.username,
         hash: hash,
-        salt: salt
+        salt: salt,
+        admin: false
     });
 
     newUser.save()
@@ -46,6 +48,7 @@ router.post('/register', function(req, res, next){
 
             res.json({ success: true, user: user, token: jwt.token, expiresIn: jwt.expires });
         })
+        .catch(err => next(err));
 })
 
 module.exports = router;
