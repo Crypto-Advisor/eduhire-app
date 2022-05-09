@@ -12,9 +12,9 @@ function App() {
       
       <Routes>
         <Route exact path ='/' element={<Home />} />
-        <Route path ='/login' element={<Login />} />
-        <Route path ='/apply' element={<Apply />} />
-        <Route path ='/apply' element={<Applicants />} />
+        <Route path ='login' element={<Login />} />
+        <Route path ='apply' element={<Apply />} />
+        <Route path ='applicants' element={<Applicants />} />
       </Routes>
     </Router>
   );
