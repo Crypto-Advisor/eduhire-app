@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-const User = require('mongoose').model('User');
-const Form = require('mongoose').model('Form');
+const {UserSchema} = require('./user');
+const {FormSchema} = require('./form')
 
 const ResponseSchema = new mongoose.Schema({
     user: {
-        type: User,
+        type: UserSchema,
         required: true
     },
     form: {
-        type: Form,
+        type: FormSchema,
         required: true
     },
     updatedAt: {
@@ -21,4 +21,4 @@ const ResponseSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Response', ResponseSchema);
+mongoose.model('Response', ResponseSchema);

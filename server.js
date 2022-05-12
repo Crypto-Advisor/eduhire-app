@@ -18,6 +18,8 @@ require('./config/database');
 
 // Must first load the models
 require('./models/user');
+require('./models/form')
+require('./models/responses')
 
 require('./config/passport')(passport);
 

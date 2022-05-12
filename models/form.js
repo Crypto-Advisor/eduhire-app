@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('mongoose').model('User');
+const {UserSchema} = require('./user');
 
 const positions = {
     developer: {
@@ -26,8 +26,8 @@ const positions = {
 
 const FormSchema = new mongoose.Schema({
     user: {
-        type: User,
-        required: true
+        type: UserSchema,
+        required: false
     },
     form: {
         company_name: {
@@ -39,7 +39,7 @@ const FormSchema = new mongoose.Schema({
             required: true
         },
         position: {
-            type: positions,
+            type: String,
             required: true
         },
         position_req: {
@@ -51,4 +51,9 @@ const FormSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Form', FormSchema);
+
+const Form = mongoose.model('Form', FormSchema);
+module.exports = {
+    FormSchema,
+    Form
+};
