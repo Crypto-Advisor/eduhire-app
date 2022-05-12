@@ -6,7 +6,7 @@ import './styles.css';
 const Navbar = () =>{
     return(
         <div className='navbar-container'>
-
+            
         </div>
     )
 }
