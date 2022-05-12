@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {UserSchema} = require('./user');
-const {FormSchema} = require('./form')
+const {FormSchema} = require('./form');
 
 const ResponseSchema = new mongoose.Schema({
     user: {

@@ -27,7 +27,7 @@ const positions = {
 const FormSchema = new mongoose.Schema({
     user: {
         type: UserSchema,
-        required: false
+        required: true
     },
     form: {
         company_name: {

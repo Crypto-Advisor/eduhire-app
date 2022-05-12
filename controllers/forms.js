@@ -63,5 +63,9 @@ exports.remove = (req, res, next) =>{
 
 }
 
+exports.verifyUser = (req, res, next) =>{
+    
+}
+
 
 
