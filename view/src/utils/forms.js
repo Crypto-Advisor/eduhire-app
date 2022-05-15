@@ -4,10 +4,11 @@ export const fetchForms = async () =>{
 }
 
 export const createForm = async (data) => {
-    const res = await fetch('/forms/add', {
+    const res = await fetch('http://localhost:3000/forms/add', {
         method: 'PUT',
         body: data
-    });
+    })
+    .catch(err => console.log(err))
     return res;
 }
 

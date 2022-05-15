@@ -8,28 +8,39 @@ import { fetchFormsThunk } from './JobListSlice'
 
 const JobList = () =>{
     const joblist = useSelector(state => state.joblist.forms)
+    const loading = useSelector(state => state.joblist.loading)
     const dispatch = useDispatch()
+    
 
     const loadForm = async () =>{
         await dispatch(fetchFormsThunk())
-        console.log(joblist)
+            .catch(err => console.log(err))
     }   
 
-
-    useEffect(() =>{
+    const handleSubmit = (e) =>{
+        e.preventDefault();
         loadForm()
-    }, []) 
-
-    const displayForm = () =>{
-        return joblist.forEach((item) =>{
-            <h1> {item.form.company_name} </h1>
-        })
+        console.log(joblist)
     }
+
+    useEffect(()=>{
+        loadForm()
+        if(loading == false){
+            console.log(joblist)
+        }
+    }, [])
+
+
 
     return(
         <div className='job-list-container'>
-            <Link to="/">Home</Link>
-            {displayForm()}
+            {joblist?.map((item) =>(
+                <div>
+                    <h2> {item.form.company_name} </h2>
+                    <h3> {item.form.position}</h3>
+                </div>
+            ))}
+            <button onClick={handleSubmit}>Load</button>
         </div>
     )
 }

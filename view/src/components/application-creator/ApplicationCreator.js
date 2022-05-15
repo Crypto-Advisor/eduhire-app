@@ -1,19 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import './styles.css';
 
+import { createFormThunk } from './ApplicationCreatorSlice'
+
 const ApplicationCreator = () =>{
+    const [application, setApplication] = useState({})
+    const dispatch = useDispatch;
+
+    const addForm = async () =>{
+        await dispatch(createFormThunk(application))
+        .catch(err => console.log(err))
+    }
 
     const handleSubmit = (event) =>{
         event.preventDefault();
+        setApplication({
+            user: null, 
+            company_name: event.target[0].value,
+            company_description: event.target[1].value,
+            position: event.target[2].value,
+            position_req: event.target[3].value,
+            research_q: event.target[4].value,
+            project_q: event.target[5].value,
+        })
+        addForm()
+        document.getElementById("application-creator-form").reset();
 
     }
 
     return(
         <div className='application-creator'>
-            <form onSubmit={handleSubmit}>
+            <form id="application-creator-form" onSubmit={handleSubmit}>
             <div className='input-container'>
                 <label htmlFor="project-name">Company Name</label>
                 <input id="project-name" name="project-name"

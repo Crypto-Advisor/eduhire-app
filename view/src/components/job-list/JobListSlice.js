@@ -12,9 +12,12 @@ export const fetchFormsThunk = createAsyncThunk(
         const formData = await fetchForms()
             .then(response => response.json())
             .then(data =>{
+                console.log(data)
                 return (data)
             })
-
+            .catch(err => console.log(err))
+        
+        console.log(formData)
         return formData
     }
 )
