@@ -1,6 +1,6 @@
 export const fetchForms = async () =>{
     const res = await fetch('http://localhost:3000/forms');
-    return res.json();
+    return res;
 }
 
 export const createForm = async (data) => {

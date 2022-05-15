@@ -1,30 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import {
-    fetchForms
-} from '../../utils/forms';
 
 import './styles.css';
 
+import { fetchFormsThunk } from './JobListSlice'
+
 const JobList = () =>{
-    const [list, setList] = useState([]);
+    const joblist = useSelector(state => state.joblist.forms)
+    const dispatch = useDispatch()
 
-    const forms = async() =>{
-        const forms = await fetchForms();
-        setList(forms);
+    const loadForm = () =>{
+        dispatch(fetchFormsThunk)
+        console.log(joblist)
     }
 
-    const displayForms = () =>{
-        list.forEach((form) =>{
-            {}
-        })
-    }
-    forms()
+
+    loadForm()
     return(
         <div className='job-list-container'>
             <Link to="/">Home</Link>
-            {list.forEach((form) => <h1>form: {form}</h1>)}
+
         </div>
     )
 }
