@@ -9,14 +9,13 @@ const initialState = {
 export const fetchFormsThunk = createAsyncThunk(
     'joblist/loadForms',
     async() =>{
-        console.log('hi')
         const formData = await fetchForms()
             .then(response => response.json())
             .then(data =>{
                 return (data)
             })
 
-            return formData
+        return formData
     }
 )
 
@@ -32,7 +31,7 @@ const JobListSlice = createSlice({
         },
         [fetchFormsThunk.fulfilled]: (state, action) =>{
             state.loading = false
-            state.forms = action
+            state.forms = action.payload
         },
         [fetchFormsThunk.rejected]: (state) =>{
             state.loading = false
@@ -40,5 +39,5 @@ const JobListSlice = createSlice({
     }
 })
 
-export const jostListSelector = state => state.forms
+export const jobListSelector = state => state.forms
 export default JobListSlice.reducer

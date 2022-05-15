@@ -10,17 +10,26 @@ const JobList = () =>{
     const joblist = useSelector(state => state.joblist.forms)
     const dispatch = useDispatch()
 
-    const loadForm = () =>{
-        dispatch(fetchFormsThunk)
+    const loadForm = async () =>{
+        await dispatch(fetchFormsThunk())
         console.log(joblist)
+    }   
+
+
+    useEffect(() =>{
+        loadForm()
+    }, []) 
+
+    const displayForm = () =>{
+        return joblist.forEach((item) =>{
+            <h1> {item.form.company_name} </h1>
+        })
     }
 
-
-    loadForm()
     return(
         <div className='job-list-container'>
             <Link to="/">Home</Link>
-
+            {displayForm()}
         </div>
     )
 }
