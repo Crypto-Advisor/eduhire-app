@@ -8,7 +8,7 @@ import { createFormThunk } from './ApplicationCreatorSlice'
 
 const ApplicationCreator = () =>{
     const [application, setApplication] = useState({})
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
     const addForm = async () =>{
         await dispatch(createFormThunk(application))
