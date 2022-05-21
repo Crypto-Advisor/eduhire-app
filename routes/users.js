@@ -5,8 +5,8 @@ const User = mongoose.model('User');
 const passport = require('passport');
 const utils = require('../utils');
 
-router.get('/admin', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
-    res.status(200).json({ success: true, msg: 'you are authorized!' });
+router.get('/authenticate', passport.authenticate('jwt', {session: false}), (req, res, next) =>{
+    res.status(200).json({ user: req.user ,success: true, msg: 'you are authorized!' });
 })
 
 router.post('/login', function(req, res, next){

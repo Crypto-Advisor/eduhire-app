@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { ExtractJwt } = require('passport-jwt/lib');
+const { fromAuthHeaderAsBearerToken } = require('passport-jwt/lib/extract_jwt');
 const path = require('path');
 const User = require('mongoose').model('User');
 const JwtStrategy = require('passport-jwt').Strategy;
@@ -7,8 +8,17 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const pathToKey = path.join(__dirname, '..', 'id_rsa_pub.pem');
 const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 
+// var cookieExtractor = function(req) {
+//     var token = null;
+//     if(req && req.cookies){
+//         token = req.cookies['token']
+//     }
+//     console.log(token)
+//     return token
+// }
+
 const options = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken,
+    jwtFromRequest: fromAuthHeaderAsBearerToken(),
     secretOrKey: PUB_KEY,
     algorithms: ['RS256']
 };

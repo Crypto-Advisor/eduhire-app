@@ -10,12 +10,6 @@ const baseUrl = '/users'
 export const login = async (data) =>{
     const req = axios.post(`${S_PORT}${baseUrl}/login`, {data})
     return req.then(response => response.data);
-
-    // const req = fetch(`${S_PORT}${baseUrl}/login`,{
-    //     method: 'POST',
-    //     body: {data}
-    // })
-    // return req;
 }
 
 export const register = (data) => {
@@ -23,7 +17,12 @@ export const register = (data) => {
     return req.then(response => response.data);
 }
 
-export const admin = () => {
-    const req = axios.get(`${S_PORT}${baseUrl}/admin`)
+export const authenticate = (token) => {
+    console.log(token)
+    const req = axios.get(`${S_PORT}${baseUrl}/authenticate`, {
+        headers: {
+            'Authorization': token
+        }
+    })
     return req.then(response => response.data);
 }

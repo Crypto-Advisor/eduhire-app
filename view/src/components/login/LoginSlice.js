@@ -11,6 +11,10 @@ export const loginThunk = createAsyncThunk(
     async(data) =>{
         console.log('calling login')
         const res = await login(data)
+        localStorage.setItem('token', res.token);
+        // document.cookie = `token=${res.token};`;
+        // document.cookie = `_id=${res.user._id};`;
+        localStorage.setItem('user', JSON.stringify(res.user));
         console.log(res)
     }
 )

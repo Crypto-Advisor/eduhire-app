@@ -28,6 +28,7 @@ const Login = () =>{
         // login({username, password})
         //     .then(data => console.log(data))
         dispatch(loginThunk({username, password}))
+        
     }
 
     const triggerRegister = (username, password) =>{

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {S_PORT} from '../misc'
 
 axios.defaults.headers.common = {
     "Content-Type": "application/json"
@@ -7,25 +8,21 @@ axios.defaults.headers.common = {
 const baseUrl = '/forms'
 
 export const fetchForms = async () =>{
-    const res = await axios.get(baseUrl)
-        .catch(err => console.log(err));
-    return res;
+    const req = await axios.get(`${S_PORT}${baseUrl}`)
+    return req.then(response => response.data);
 }
 
 export const createForm = async (data) => {
-    const res = await axios.put(`${baseUrl}/add`, data)
-        .catch(err => console.log(err));
-    return res;
+    const req = await axios.put(`${S_PORT}${baseUrl}/add`, data)
+    return req.then(response => response.data);
 }
 
 export const updateForm = async (data) => {
-    const res = await axios.post(`${baseUrl}/update`, data)
-        .catch(err => console.log(err));
-    return res;
+    const req = await axios.post(`${S_PORT}${baseUrl}/update`, data)
+    return req.then(response => response.data);
 }
 
 export const removeForm = async (data) => {
-    const res = await axios.delete(`${baseUrl}/delete`, data)
-        .catch(err => console.log(err));
-    return res;
+    const req = await axios.delete(`${S_PORT}${baseUrl}/delete`, data)
+    return req.then(response => response.data);
 }

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 import './styles.css';
 
-import { createFormThunk } from './ApplicationCreatorSlice'
+import { createFormThunk, getUserThunk } from './ApplicationCreatorSlice'
 
 const ApplicationCreator = () =>{
     const [application, setApplication] = useState({})
     const dispatch = useDispatch();
 
     const addForm = async () =>{
+        await dispatch(getUserThunk())
         await dispatch(createFormThunk(application))
         .catch(err => console.log(err))
     }
