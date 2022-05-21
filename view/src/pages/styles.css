@@ -1,0 +1,9 @@
+.landing{
+    display: flex;
+    flex-direction: column;
+    margin: 10% 0;
+}
+
+.button-text{
+    text-align: center;
+}

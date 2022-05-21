@@ -18,3 +18,18 @@ textarea{
     height: 100px;
 	width: 100%;
 }
+
+@media (min-width: 700px) {
+    .input-container{
+        width: 600px;
+    }
+
+    textarea{
+        width: 600px;
+    }
+
+    input{
+        width: 600px;
+    }
+}
+

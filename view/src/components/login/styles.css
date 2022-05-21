@@ -71,3 +71,19 @@ input {
 	width: 100%;
 }
 
+.login-input-container{
+	margin: 10px 0;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    width: 100%;
+}
+
+@media (min-width: 400px) {
+
+	.login{
+		width: 300px;
+	}
+}
+

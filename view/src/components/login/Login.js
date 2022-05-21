@@ -68,14 +68,14 @@ const Login = () =>{
     return(
         <div className='login-container'>
             <form>
-                <div className="input-container">
+                <div className="login-input-container">
                     <label>Username </label>
-                    <input type="text" name="uname" required />
+                    <input className='login' type="text" name="uname" required />
                     {renderErrorMessage("uname")}
                 </div>
-                <div className="input-container">
+                <div className="login-input-container">
                     <label>Password </label>
-                    <input type="password" name="pass" required />
+                    <input className='login' type="password" name="pass" required />
                     {renderErrorMessage("pass")}
                 </div>
                 <div className="button-container">
