@@ -18,7 +18,8 @@ export const getUserThunk = createAsyncThunk(
 export const createFormThunk = createAsyncThunk(
     'applicationcreator/createForm',
     async(data) =>{
-        const response = await createForm(data)
+        console.log('calling create form')
+        const response = await createForm(localStorage.token, data)
         console.log(response)
     }
 )

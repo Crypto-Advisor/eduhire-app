@@ -7,27 +7,26 @@ import './styles.css';
 import { createFormThunk, getUserThunk } from './ApplicationCreatorSlice'
 
 const ApplicationCreator = () =>{
-    const [application, setApplication] = useState({})
     const dispatch = useDispatch();
 
-    const addForm = async () =>{
-        await dispatch(getUserThunk())
-        await dispatch(createFormThunk(application))
-        .catch(err => console.log(err))
-    }
-
-    const handleSubmit = (event) =>{
-        event.preventDefault();
-        setApplication({
-            user: null, 
+    const addForm = async (event) =>{
+        const appli = {
             company_name: event.target[0].value,
             company_description: event.target[1].value,
             position: event.target[2].value,
             position_req: event.target[3].value,
             research_q: event.target[4].value,
             project_q: event.target[5].value,
-        })
-        addForm()
+        }
+
+        console.log(appli)
+        await dispatch(createFormThunk(appli))
+        .catch(err => console.log(err))
+    }
+
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        addForm(event)
         document.getElementById("application-creator-form").reset();
 
     }

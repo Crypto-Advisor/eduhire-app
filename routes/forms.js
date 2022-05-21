@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const passport = require('passport')
 
 const { 
     get, 
@@ -9,7 +10,7 @@ const {
 
 router.get('/', get);
 
-router.put('/add', create);
+router.put('/add', passport.authenticate('jwt', {session: false}), create);
 
 router.post('/update', update);
 

@@ -9,9 +9,10 @@ exports.get = (req, res, next) =>{
 }
 
 exports.create = (req, res, next) =>{
-    const {user, company_name, company_description, position, position_req, research_q, project_q} = req.body;
+    console.log(req.body)
+    const {company_name, company_description, position, position_req, research_q, project_q} = req.body;
     const newForm = new Form({
-        user,
+        user: req.user,
         form: {
             company_name,
             company_description,
@@ -26,7 +27,7 @@ exports.create = (req, res, next) =>{
         .then((form) =>{
             res.json({ success: true, form: form })
         })
-        .catch(err => next(err))
+        .catch(err => console.log(err))
 }
 
 exports.update = (req, res, next) =>{
@@ -63,9 +64,6 @@ exports.remove = (req, res, next) =>{
 
 }
 
-exports.verifyUser = (req, res, next) =>{
-    
-}
 
 
 
