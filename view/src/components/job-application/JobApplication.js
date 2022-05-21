@@ -7,7 +7,6 @@ import './styles.css';
 const JobApplication = () =>{
     return(
         <div className='job-application-container'>
-            <Link to="/">Home</Link>
 
             
 

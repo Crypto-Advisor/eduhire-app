@@ -7,7 +7,6 @@ import './styles.css';
 const ApplicationList = () =>{
     return(
         <div className='application-list-container'>
-            <Link to="/">Home</Link>
 
         </div>
     )

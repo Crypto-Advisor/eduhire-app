@@ -8,6 +8,10 @@ exports.get = (req, res, next) =>{
     })
 }
 
+exports.getByUser = (req, res, next) =>{
+    
+}
+
 exports.create = (req, res, next) =>{
     console.log(req.body)
     const {company_name, company_description, position, position_req, research_q, project_q} = req.body;

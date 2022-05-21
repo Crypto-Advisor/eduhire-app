@@ -67,9 +67,7 @@ const Login = () =>{
 
     return(
         <div className='login-container'>
-            <Link to="/">Home</Link>
-
-            <form onSubmit={handleSubmit}>
+            <form>
                 <div className="input-container">
                     <label>Username </label>
                     <input type="text" name="uname" required />
@@ -81,9 +79,8 @@ const Login = () =>{
                     {renderErrorMessage("pass")}
                 </div>
                 <div className="button-container">
-                    <input type="submit" />
+                    <button onClick={handleSubmit}>Login</button>
                     <button onClick={handleRegister}>Register</button>
-                    <input type="checkbox" checked="checked" name="remember" /> Remember me 
                 </div>
             </form>
         </div>

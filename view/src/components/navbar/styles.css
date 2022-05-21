@@ -1,0 +1,20 @@
+.navbar-container{
+    background-color: lightblue;
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    font-size: 1em;
+}
+
+.logo-icon{
+    color: white;
+}
+
+.nav-button{
+    text-decoration: none;
+    color: white;
+}
+
+.nav-element{
+    padding: 10px;
+}
