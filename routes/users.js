@@ -33,7 +33,7 @@ router.post('/login', function(req, res, next){
 router.post('/register', function(req, res, next){
     const {username, password} = req.body.data
     const saltHash = utils.genPassword(password);
-
+    
     const salt = saltHash.salt;
     const hash = saltHash.hash;
 
@@ -46,11 +46,12 @@ router.post('/register', function(req, res, next){
 
     newUser.save()
         .then((user) =>{
-            const jwt = utils.issueJWT(user)
 
-            res.json({ success: true, user: user, token: jwt.token, expiresIn: jwt.expires });
+            const jwt = utils.issueJWT(user);
+
+            res.json({success: true, user: user, token: jwt.token , expiresIn: jwt.expires });
         })
-        .catch(err => res.send(err));
-})
+        .catch(err => next(err));
+});
 
 module.exports = router;
