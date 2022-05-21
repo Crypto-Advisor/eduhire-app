@@ -1,0 +1,1 @@
+export const S_PORT = 'http://localhost:3000'

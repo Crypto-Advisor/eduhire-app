@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {S_PORT} from '../misc'
 
 axios.defaults.headers.common = {
     "Content-Type": "application/json"
@@ -7,19 +8,22 @@ axios.defaults.headers.common = {
 const baseUrl = '/users'
 
 export const login = async (data) =>{
-    const res = await axios.post(`${baseUrl}/login`, data)
-        .catch(err => console.log(err));
-    return res;
+    const req = axios.post(`${S_PORT}${baseUrl}/login`, {data})
+    return req.then(response => response.data);
+
+    // const req = fetch(`${S_PORT}${baseUrl}/login`,{
+    //     method: 'POST',
+    //     body: {data}
+    // })
+    // return req;
 }
 
-export const register = async (data) => {
-    const res = await axios.post(`${baseUrl}/register`, data)
-        .catch(err => console.log(err));
-    return res;
+export const register = (data) => {
+    const req = axios.post(`${S_PORT}${baseUrl}/register`, {data})
+    return req.then(response => response.data);
 }
 
-export const admin = async () => {
-    const res = await axios.get(`${baseUrl}/admin`)
-        .catch(err => console.log(err));
-    return res;
+export const admin = () => {
+    const req = axios.get(`${S_PORT}${baseUrl}/admin`)
+    return req.then(response => response.data);
 }

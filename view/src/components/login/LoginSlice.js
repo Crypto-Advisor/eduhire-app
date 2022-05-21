@@ -8,19 +8,17 @@ const initialState = {
 
 export const loginThunk = createAsyncThunk(
     'login/login',
-    async(username, password) =>{
-        await login(username, password)
-            .then(response => response.json())
-            .then(data =>{
-                console.log(data)
-            })
+    async(data) =>{
+        console.log('calling login')
+        const res = await login(data)
+        console.log(res)
     }
 )
 
 export const registerThunk = createAsyncThunk(
     'login/register',
-    async(username, password)=>{
-        await register(username, password)
+    async(data)=>{
+        await register(data)
         .then(response => response.json())
         .then(data =>{
             console.log(data)

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-import { login, register } from '../../utils/users';
+import { loginThunk, registerThunk } from './LoginSlice';
+import { login } from '../../utils/users';
 
 import './styles.css';
 
@@ -23,16 +24,15 @@ const Login = () =>{
         return {username, password}
     }
 
-    const triggerLogin = async (username, password) =>{
-        await dispatch(login({username, password}))
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+    const triggerLogin = (username, password) =>{
+        // login({username, password})
+        //     .then(data => console.log(data))
+        dispatch(loginThunk({username, password}))
     }
 
-    const triggerRegister = async(username, password) =>{
-        await dispatch(register({username, password}))
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+    const triggerRegister = (username, password) =>{
+        dispatch(registerThunk({username, password}))
+
     }
 
     const handleSubmit = (event) =>{

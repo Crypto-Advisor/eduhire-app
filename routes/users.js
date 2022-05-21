@@ -10,33 +10,35 @@ router.get('/admin', passport.authenticate('jwt', {session: false}), (req, res, 
 })
 
 router.post('/login', function(req, res, next){
-    User.findOne({ username: req.body.username })
+    const {username, password} = req.body.data
+    User.findOne({ username: username })
         .then((user) =>{
             if(!user){
                 res.status(401).json({ success: false, msg: "could not find user" });
             }
 
-            const isValid = utils.validPassword(req.body.password, user.hash, user.salt);
+            const isValid = utils.validPassword(password, user.hash, user.salt);
 
             if(isValid){
                 const tokenObject = utils.issueJWT(user)
 
                 res.status(200).json({ success: true, user: user, token: tokenObject.token, expiresIn: tokenObject.expires });
             } else{
-                res.status(401).json({ success: false, msg: "you entered the wrong password"});
+                res.status(401).json({ success: false, msg: "you entered the wrong password" });
             }
         })
         .catch((err) => next(err));
-})
+});
 
 router.post('/register', function(req, res, next){
-    const saltHash = utils.genPassword(req.body.password);
+    const {username, password} = req.body.data
+    const saltHash = utils.genPassword(password);
 
     const salt = saltHash.salt;
     const hash = saltHash.hash;
 
     const newUser = new User({
-        username: req.body.username,
+        username: username,
         hash: hash,
         salt: salt,
         admin: false
@@ -48,7 +50,7 @@ router.post('/register', function(req, res, next){
 
             res.json({ success: true, user: user, token: jwt.token, expiresIn: jwt.expires });
         })
-        .catch(err => next(err));
+        .catch(err => res.send(err));
 })
 
 module.exports = router;

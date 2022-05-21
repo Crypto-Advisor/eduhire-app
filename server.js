@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const passport = require('passport')
+const cookieParser = require('cookie-parser')
 
 /**
  * -------------- GENERAL SETUP ----------------
@@ -31,6 +32,7 @@ app.use(express.urlencoded({extended: true}));
 
 // Allows our Angular application to make HTTP requests to Express application
 app.use(cors());
+app.use(cookieParser());
 
 /**
  * -------------- ROUTES ----------------
