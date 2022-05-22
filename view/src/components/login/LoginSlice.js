@@ -3,7 +3,9 @@ import { login, register, admin } from "../../utils/users";
 
 const initialState = {
     login: {},
-    loading: false
+    loggedIn: false,
+    loading: true,
+    registered: ''
 }
 
 export const loginThunk = createAsyncThunk(
@@ -22,7 +24,7 @@ export const loginThunk = createAsyncThunk(
 export const registerThunk = createAsyncThunk(
     'login/register',
     async(data)=>{
-        const res = await login(data)
+        const res = await register(data)
         console.log(res)
     }
 )
@@ -34,7 +36,23 @@ const LoginSlice = createSlice({
 
     },
     extraReducers: {
-       
+        [loginThunk.pending]: (state) =>{
+            state.loading = true;
+        },
+        [loginThunk.fulfilled]: (state, action) =>{
+            state.loading = false;
+            state.loggedIn = true;
+        },
+        [loginThunk.rejected]: (state) =>{
+            state.loading = false;
+            state.loggedIn = false;
+        },
+        [registerThunk.fulfilled]: (state, action) =>{
+            state.registered = 'true';
+        },
+        [registerThunk.rejected]: (state) =>{
+            state.registered = 'false';
+        }
     }
 })
 

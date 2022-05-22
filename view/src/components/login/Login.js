@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { loginThunk, registerThunk } from './LoginSlice';
-import { login } from '../../utils/users';
+import { login, register } from '../../utils/users';
 
 import './styles.css';
 
 const Login = () =>{
-
+    const loggedIn = useSelector(state => state.login.loggedIn)
+    const loading = useSelector(state => state.login.loading)
+    const registered = useSelector(state => state.login.registered)
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const dispatch = useDispatch();
@@ -58,6 +60,27 @@ const Login = () =>{
         console.log(typeof username)
     }
 
+    useEffect(() =>{
+        if(loading == false && loggedIn == false){
+            document.getElementById('loading').innerHTML = "Login failed!"
+        }
+    }, [loading])
+
+    useEffect(() =>{
+        if(loggedIn == true){
+            window.location.href = '../apply';
+        }
+    }, [loggedIn])
+
+    useEffect(() =>{
+        if(registered == 'true'){
+            document.getElementById('loading').innerHTML = "Successfully Registered!"
+        }
+        if(registered == 'false'){
+            document.getElementById('loading').innerHTML = "Failed to Register!"
+        }
+    }, [registered])
+
 
     const renderErrorMessage = (name) =>{
         name === errorMessages.name && (
@@ -83,6 +106,7 @@ const Login = () =>{
                     <button onClick={handleRegister}>Register</button>
                 </div>
             </form>
+            <p id='loading'></p>
         </div>
     )
 }

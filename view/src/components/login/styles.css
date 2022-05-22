@@ -71,6 +71,11 @@ input {
 	width: 100%;
 }
 
+#loading{
+	color: red;
+	text-align: center;
+}
+
 .login-input-container{
 	margin: 10px 0;
 	display: flex;
