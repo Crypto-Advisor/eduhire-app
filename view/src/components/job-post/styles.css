@@ -1,0 +1,14 @@
+.job-post-container{
+    background-color: rgb(237, 237, 237);
+    margin: 10px;
+    padding: 5px 10px;
+}
+
+.job-button{
+    text-align: right;
+}
+
+#jbutton{
+    border: 1px solid lightblue;
+	background-color: lightblue;
+}

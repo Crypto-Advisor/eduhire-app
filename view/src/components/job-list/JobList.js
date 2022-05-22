@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import './styles.css';
 
 import { fetchFormsThunk } from './JobListSlice'
+import JobPost from '../job-post/JobPost';
 
 const JobList = () =>{
     const joblist = useSelector(state => state.joblist.forms)
@@ -36,8 +37,7 @@ const JobList = () =>{
         <div className='job-list-container'>
             {joblist?.map((item) =>(
                 <div>
-                    <h2> {item.form.company_name} </h2>
-                    <h3> {item.form.position}</h3>
+                    <JobPost name={item.form.company_name} position={item.form.position} description={item.form.company_description} />
                 </div>
             ))}
             <button onClick={handleSubmit}>Load</button>
