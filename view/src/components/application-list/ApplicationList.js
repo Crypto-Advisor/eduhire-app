@@ -22,8 +22,17 @@ const ApplicationList = () =>{
     return(
         <div className='application-list-container'>
             {list?.map((item) =>(
-                <div className='application-list-item'>
-                    {item.form.company_name}
+                <div className='application-list-item job-post-container'>
+                    <div className='job-title'>
+                        <h2>Company: {item.form.company_name}</h2>
+                    </div>
+                    <div className='job-position'>
+                        <h2>Position: {item.form.position}</h2>
+                        <p>Company Description: {item.form.company_description}</p>
+                    </div>
+                    <div className='job-button'>
+                        <button id='jbutton'>Review</button>
+                    </div>
                 </div>
             ))}
         </div>
