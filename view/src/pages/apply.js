@@ -8,7 +8,6 @@ export default function Apply(){
     return(
         <div className="apply-container">
             <Navbar />
-            <JobApplication />
             <JobList />
         </div>
     );

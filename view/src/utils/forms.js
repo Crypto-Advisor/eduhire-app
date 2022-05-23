@@ -12,6 +12,11 @@ export const fetchForms = async () =>{
     return req.data;
 }
 
+export const fetchForm = async (id) =>{
+    const req = await axios.get(`${S_PORT}${baseUrl}/${id}`)
+    return req.data;
+}
+
 export const createForm = async (token, data) => {
     const req = await axios.put(`${S_PORT}${baseUrl}/add`, data, {
         headers: {

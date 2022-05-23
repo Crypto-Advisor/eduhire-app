@@ -4,12 +4,15 @@ const passport = require('passport')
 const { 
     get, 
     getByUser,
+    getById,
     create, 
     update, 
     remove,
 } = require('../controllers/forms');
 
 router.get('/', get);
+
+router.get('/:id', getById);
 
 router.get('/:username', getByUser);
 

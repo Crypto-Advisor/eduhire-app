@@ -35,12 +35,14 @@ const JobList = () =>{
 
     return(
         <div className='job-list-container'>
+            <div className='job-list-sub'>
             {joblist?.map((item) =>(
                 <div>
-                    <JobPost name={item.form.company_name} position={item.form.position} description={item.form.company_description} />
+                    <JobPost item={item} />
                 </div>
             ))}
             <button onClick={handleSubmit}>Load</button>
+            </div>
         </div>
     )
 }

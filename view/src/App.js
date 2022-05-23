@@ -5,6 +5,7 @@ import Home from './pages/home'
 import LoginPage from './pages/login-page'
 import Apply from './pages/apply'
 import Applicants from './pages/applicants'
+import JobApplicationPage from './pages/jobapplication';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path ='/' element={<Home />} />
         <Route path ='login' element={<LoginPage />} />
         <Route path ='apply' element={<Apply />} />
+        <Route path = 'apply/:id' element={<JobApplicationPage />} />
         <Route path ='applicants' element={<Applicants />} />
       </Routes>
     </Router>

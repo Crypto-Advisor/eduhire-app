@@ -12,3 +12,9 @@
     border: 1px solid lightblue;
 	background-color: lightblue;
 }
+
+@media (min-width: 700px) {
+    .job-post-container{
+        width: 600px;
+    }
+}

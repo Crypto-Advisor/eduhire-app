@@ -12,6 +12,13 @@ exports.getByUser = (req, res, next) =>{
     
 }
 
+exports.getById = (req, res, next) =>{
+    const { id } = req.params;
+    Form.find({"_id": id}, function(err, form) {
+        res.json(form)
+    })
+}
+
 exports.create = (req, res, next) =>{
     console.log(req.body)
     const {company_name, company_description, position, position_req, research_q, project_q} = req.body;
