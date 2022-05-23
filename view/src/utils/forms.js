@@ -26,6 +26,11 @@ export const createForm = async (token, data) => {
     return req.data;
 }
 
+export const fetchFormsByUsername = async (username) => {
+    const req = await axios.get(`${S_PORT}${baseUrl}/user/${username}`)
+    return req.data
+}
+
 export const updateForm = async (data) => {
     const req = await axios.post(`${S_PORT}${baseUrl}/update`, data)
     return req.data;

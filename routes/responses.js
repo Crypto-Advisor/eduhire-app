@@ -8,7 +8,7 @@ const {
     remove,
 } = require('../controllers/responses');
 
-router.get('/:id', get);
+router.get('/:id', passport.authenticate('jwt', {session: false}), get);
 
 router.put('/add', passport.authenticate('jwt', {session: false}), create);
 

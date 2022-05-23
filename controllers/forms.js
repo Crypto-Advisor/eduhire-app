@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Form = mongoose.model('Form');
+const User = mongoose.model('User')
 const utils = require('../utils');
 
 exports.get = (req, res, next) =>{
@@ -9,7 +10,18 @@ exports.get = (req, res, next) =>{
 }
 
 exports.getByUser = (req, res, next) =>{
-    
+    const { username } = req.params
+    User.find({ username: username }, function(err, user) {
+        if(err){
+            res.json({ success: false, err})
+        }
+        Form.find({ user: user }, function(err, forms) {
+            if(err){
+                res.json({ success: false, err})
+            }
+            res.json(forms)
+        })
+    })
 }
 
 exports.getById = (req, res, next) =>{
