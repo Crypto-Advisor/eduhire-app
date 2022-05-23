@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from "react-router-dom";
-import { fetchFormThunk } from './JobApplicationSlice';
+import { fetchFormThunk, submitFormThunk } from './JobApplicationSlice';
 
 import './styles.css';
 
@@ -17,8 +17,21 @@ const JobApplication = () =>{
             .catch(err => console.log(err))
     }
 
-    const handleSubmit = (event) =>{
+    const submitForm = async (event) =>{
+        const data = {
+            form: form[0],
+            research_question: event.target[0].value,
+            project: event.target[1].value
+        }
 
+        await dispatch(submitFormThunk(data))
+            .catch(err => console.log(err))
+    }
+
+    const handleSubmit = (event) =>{
+        event.preventDefault()
+        submitForm(event)
+        document.getElementById("job-application-form").reset()
     }
 
     useEffect(() =>{
@@ -50,7 +63,7 @@ const JobApplication = () =>{
                                 <p>Position Requirements: {item.form.position_req}</p>
                             </div>
                         </div>
-                        <form onSubmit={handleSubmit}>
+                        <form id="job-application-form" onSubmit={handleSubmit}>
                             <div className='input-container'>
                                 <label htmlFor='projq'>{item.form.research_q}</label>
                                 <textarea id="resq" name="research-question"

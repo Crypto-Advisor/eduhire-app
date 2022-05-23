@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchForm } from "../../utils/forms";
+import { createResponse } from "../../utils/responses"
 
 const initialState = {
     form: [],
@@ -14,6 +15,14 @@ export const fetchFormThunk = createAsyncThunk(
         const formData = await fetchForm(id)
         //console.log(formData)
         return formData
+    }
+)
+
+export const submitFormThunk = createAsyncThunk(
+    'jobapplication/submitForm',
+    async(data) =>{
+        const response = await createResponse(localStorage.token, data)
+        console.log(response)
     }
 )
 

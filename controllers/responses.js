@@ -19,9 +19,13 @@ exports.get = (req, res, next) =>{
 
 
 exports.create = (req, res, next) =>{
-    const { user, form, response } = req.body
+    const { form, research_question, project } = req.body
+    const response = {
+        research_question,
+        project
+    }
     const newResponse = new Response({
-        user,
+        user: req.user,
         form,
         response
     })
