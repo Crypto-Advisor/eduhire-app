@@ -15,6 +15,10 @@ const ApplicationList = () =>{
             .catch(err => console.log(err))
     }
 
+    const handleSubmit = (item) =>{
+        window.location.href = `../applicants/${item._id}`;
+    }
+
     useEffect(() =>{
         loadList()
     }, [])
@@ -31,7 +35,7 @@ const ApplicationList = () =>{
                         <p>Company Description: {item.form.company_description}</p>
                     </div>
                     <div className='job-button'>
-                        <button id='jbutton'>Review</button>
+                        <button onClick={() => handleSubmit(item)} id='jbutton'>Review</button>
                     </div>
                 </div>
             ))}

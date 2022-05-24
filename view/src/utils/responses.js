@@ -7,8 +7,13 @@ axios.defaults.headers.common = {
 
 const baseUrl = '/responses'
 
-export const fetchResponse = async () =>{
-    
+export const fetchResponses = async (token, id) =>{
+    const req = axios.get(`${S_PORT}${baseUrl}/${id}`, {
+        headers: {
+            'Authorization': token
+        }
+    })
+    return req.then(response => response.data)
 }
 
 export const createResponse = async (token, data) => {

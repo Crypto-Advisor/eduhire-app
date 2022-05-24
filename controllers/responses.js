@@ -8,13 +8,13 @@ exports.get = (req, res, next) =>{
     Form.findOne({ _id: id })
         .then((Form) =>{
             Response.find({ form: Form }, function(err, result){
-                if(req.user != Form.user){
+                if(!req.user.equals(Form.user)){
                     res.json({ success: false, response: "invalid user access"})
                 }
                 else if(err){
-                    next(err)
+                    res.next(err)
                 } else{
-                    res.send({ success: true, result })
+                    res.json(result)
                 }
             })
         })
