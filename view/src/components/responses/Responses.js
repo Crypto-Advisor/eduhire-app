@@ -29,7 +29,7 @@ const Responses = () =>{
             <div className='responses-sub'>
                 {
                     loaded ? responses?.map((item) =>(
-                        <div className='job-post-container'>
+                        <div key={item._id} className='job-post-container'>
                             <div className='job-title'>
                                 <h2>Username: {item.user.username}</h2>
                             </div>    

@@ -10,6 +10,7 @@ import JobPost from '../job-post/JobPost';
 const JobList = () =>{
     const joblist = useSelector(state => state.joblist.forms)
     const loading = useSelector(state => state.joblist.loading)
+    const loaded = useSelector(state => state.joblist.loaded)
     const dispatch = useDispatch()
     
 
@@ -26,23 +27,24 @@ const JobList = () =>{
 
     useEffect(()=>{
         loadForm()
-        if(loading == false){
-            console.log(joblist)
-        }
     }, [])
 
+    useEffect(() =>{
+        console.log(joblist)
+    }, [loaded])
 
 
     return(
         <div className='job-list-container'>
-            <div className='job-list-sub'>
-            {joblist?.map((item) =>(
-                <div>
-                    <JobPost item={item} />
-                </div>
-            ))}
-            <button onClick={handleSubmit}>Load</button>
-            </div>
+            {loaded ? <div className='job-list-sub'>
+                {joblist?.map((item) =>(
+                    <div key={item._id}>
+                        <JobPost item={item} />
+                    </div>
+                ))}
+                <button onClick={handleSubmit}>Load</button>
+            </div> : <h1>Loading...</h1>}
+            
         </div>
     )
 }

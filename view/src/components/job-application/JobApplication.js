@@ -48,7 +48,7 @@ const JobApplication = () =>{
         <div className='job-application-container'>
             <div id='form'>
                 {form?.map((item) => (
-                    <div className='job-application-container'>
+                    <div key={item._id} className='job-application-container'>
                         <div className='job-application-description'>
                             <div>
                                 <h1>Company: {item.form.company_name}</h1>

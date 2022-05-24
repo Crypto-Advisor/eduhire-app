@@ -54,4 +54,41 @@ router.post('/register', function(req, res, next){
         .catch(err => next(err));
 });
 
+router.post('/update', passport.authenticate('jwt', {session: false}), function(req, res, next){
+    const {username, password, oldPassword} = req.body.data
+
+    User.findOne({ username: username })
+        .then((user) =>{
+            if(!user){
+                res.status(401).json({ success: false, msg: "could not find user" });
+            }
+
+            const isValid = utils.validPassword(oldPassword, user.hash, user.salt);
+
+            if(!isValid){
+                res.status(401).json({ success: false, msg: "you entered the wrong password" });
+            }
+
+            const saltHash = utils.genPassword(password);
+
+            const salt = saltHash.salt;
+            const hash = saltHash.hash;
+            user.salt = salt;
+            user.hash = hash;
+
+            user.save()
+                .then((user) =>{
+
+                    const jwt = utils.issueJWT(user);
+        
+                    res.json({success: true, user: user, token: jwt.token , expiresIn: jwt.expires });
+                })
+                .catch(err => next(err));
+        })
+        .catch((err) => next(err));
+
+
+
+});
+
 module.exports = router;

@@ -11,8 +11,12 @@ export default function Home(){
                 <div className="button-text">
                     <p>Learn and Build While Applying to Jobs</p>
                     <div className="buttons">
-                        <button>Apply</button>
-                        <button>Hire</button>
+                        <Link to="/apply">
+                            <button>Apply</button>
+                        </Link>
+                        <Link to="/applicants">
+                            <button>Hire</button>
+                        </Link>
                     </div>
                 </div>
             </div>

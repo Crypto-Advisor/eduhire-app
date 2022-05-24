@@ -3,7 +3,8 @@ import { fetchForms } from "../../utils/forms";
 
 const initialState = {
     forms: [],
-    loading: false
+    loading: false,
+    loaded: false
 }
 
 export const fetchFormsThunk = createAsyncThunk(
@@ -28,6 +29,7 @@ const JobListSlice = createSlice({
         [fetchFormsThunk.fulfilled]: (state, action) =>{
             state.loading = false
             state.forms = action.payload
+            state.loaded = true
         },
         [fetchFormsThunk.rejected]: (state) =>{
             state.loading = false

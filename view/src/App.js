@@ -7,6 +7,7 @@ import Apply from './pages/apply'
 import Applicants from './pages/applicants'
 import JobApplicationPage from './pages/jobapplication';
 import Applicant from './pages/applicant';
+import Account from './pages/account';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path = 'apply/:id' element={<JobApplicationPage />} />
         <Route path ='applicants' element={<Applicants />} />
         <Route path = 'applicants/:id' element={<Applicant />} />
+        <Route path = 'account' element={<Account />} />
       </Routes>
     </Router>
   );

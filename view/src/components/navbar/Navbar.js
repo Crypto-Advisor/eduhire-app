@@ -27,6 +27,9 @@ const Navbar = () =>{
             <div className='nav-element'>
                 <Link className='nav-button' to="/applicants">Applicants</Link>
             </div>
+            <div className='nav-element'>
+                <Link className='nav-button' to="/account">Account</Link>
+            </div>
         </div>
     )
 }

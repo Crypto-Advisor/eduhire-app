@@ -6,6 +6,7 @@ import applicationCreatorSlice from '../components/application-creator/Applicati
 import loginSlice from '../components/login/LoginSlice';
 import navbarSlice from '../components/navbar/NavbarSlice';
 import responsesSlice from '../components/responses/ResponsesSlice';
+import accountSettingsSlice from '../components/accountSettings/AccountSettingsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
       applicationcreator: applicationCreatorSlice,
       login: loginSlice,
       navbar: navbarSlice,
-      responses: responsesSlice
+      responses: responsesSlice,
+      accountsettings: accountSettingsSlice
     },
   });

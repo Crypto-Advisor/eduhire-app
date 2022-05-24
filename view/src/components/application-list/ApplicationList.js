@@ -26,7 +26,7 @@ const ApplicationList = () =>{
     return(
         <div className='application-list-container'>
             {list?.map((item) =>(
-                <div className='application-list-item job-post-container'>
+                <div key={item._id} className='application-list-item job-post-container'>
                     <div className='job-title'>
                         <h2>Company: {item.form.company_name}</h2>
                     </div>
