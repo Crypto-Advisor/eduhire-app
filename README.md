@@ -15,25 +15,25 @@ Employers create their job application around a 30 minute research question and 
 ## User Flow and Features
 
 ## Home
-!(image)(https://i.imgur.com/aeczfQf.png)
+![image](https://i.imgur.com/aeczfQf.png)
 
 ## Login
-!(image)(https://i.imgur.com/csVEA6l.png)
+![image](https://i.imgur.com/csVEA6l.png)
 
 ## Apply For Jobs
-!(image)(https://i.imgur.com/AU65uon.png)
+![image](https://i.imgur.com/AU65uon.png)
 
 ## Job Application
-!(image)(https://i.imgur.com/dSwbJZZ.png)
+![image](https://i.imgur.com/dSwbJZZ.png)
 
 ## Applicants Page (Application Creator + Existing Job Postings)
-!(image)(https://i.imgur.com/fAjSNEM.png)
+![image](https://i.imgur.com/fAjSNEM.png)
 
 ## Job Posting Review Applicants
-!(image)(https://i.imgur.com/4USXCLo.png)
+![image](https://i.imgur.com/4USXCLo.png)
 
 ## Contact Applicant
-!(image)(https://i.imgur.com/TwcU5rH.png)
+![image](https://i.imgur.com/TwcU5rH.png)
 
 ## Account Settings Page
-!(image)(https://i.imgur.com/91fYK1D.png)
+![image](https://i.imgur.com/91fYK1D.png)
