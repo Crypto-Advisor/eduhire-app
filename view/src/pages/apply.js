@@ -8,7 +8,7 @@ export default function Apply(){
     return(
         <div className="apply-container">
             <Navbar />
-            <JobList />
+            {localStorage.token ? <JobList /> : <h1><Link to="/login">Login</Link> Before Applying</h1>}
         </div>
     );
 }

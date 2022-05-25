@@ -7,7 +7,8 @@ export default function Account(){
     return(
         <div className="account-container">
             <Navbar />
-            <AccountSettings />
+            {localStorage.token ? <AccountSettings /> : <h1><Link to="/login">Login</Link> Before Viewing Account Settings</h1>}
+            
         </div>
     );
 }

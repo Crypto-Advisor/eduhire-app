@@ -6,6 +6,11 @@
     font-size: 1em;
 }
 
+.local-storage-checker{
+    display: flex;
+    flex-direction: row;
+}
+
 .logo-icon{
     color: white;
 }

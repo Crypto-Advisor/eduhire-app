@@ -21,15 +21,19 @@ const Navbar = () =>{
             <div className='nav-element'>
                 <Link className='nav-button' to="/login">Login</Link>
             </div>
-            <div className='nav-element'>
-                <Link className='nav-button' to="/apply">Apply</Link>
-            </div>
-            <div className='nav-element'>
-                <Link className='nav-button' to="/applicants">Applicants</Link>
-            </div>
-            <div className='nav-element'>
-                <Link className='nav-button' to="/account">Account</Link>
-            </div>
+            { localStorage.token? 
+                <div className='local-storage-checker'>
+                    <div className='nav-element'>
+                        <Link className='nav-button' to="/apply">Apply</Link>
+                    </div>
+                    <div className='nav-element'>
+                        <Link className='nav-button' to="/applicants">Applicants</Link>
+                    </div>
+                    <div className='nav-element'>
+                        <Link className='nav-button' to="/account">Account</Link>
+                    </div> 
+                </div>: <div></div>
+            }
         </div>
     )
 }

@@ -7,8 +7,11 @@ export default function Apply(){
     return(
         <div className="login-container">
             <Navbar />
-            <ApplicationList />
-            <ApplicationCreator />
+            {localStorage.token ? 
+            <div>
+                <ApplicationList />
+                <ApplicationCreator />
+            </div> : <h1><Link to="/login">Login</Link> Before Viewing Applicants</h1>}
         </div>
     );
 }
