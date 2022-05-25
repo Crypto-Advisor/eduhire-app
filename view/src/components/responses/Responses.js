@@ -52,10 +52,10 @@ const Responses = () =>{
                                         <span className="close-button" onClick={handleSubmit}>&times;</span>
                                     </div>
                                     <div>
-                                        <p><b>Email: </b> {item.user.email}</p>
+                                        <p><b>Email: </b> {item.user.email ? item.user.email : "No Email"}</p>
                                     </div>
                                     <div>
-                                        <p><b>Telegram: </b> {item.user.telegram}</p>
+                                        <p><b>Telegram: </b> {item.user.telegram ? item.user.telegram : "No Telegram"}</p>
                                     </div>
                                 </span>
                             </div> 
