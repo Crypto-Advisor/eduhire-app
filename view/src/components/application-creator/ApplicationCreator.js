@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 import './styles.css';
 
-import { createFormThunk, getUserThunk } from './ApplicationCreatorSlice'
+import { createFormThunk, getUserThunk } from './ApplicationCreatorSlice';
+import { getApplicationListThunk } from '../application-list/ApplicationListSlice';
 
 const ApplicationCreator = () =>{
     const dispatch = useDispatch();
@@ -21,6 +22,8 @@ const ApplicationCreator = () =>{
 
         console.log(appli)
         await dispatch(createFormThunk(appli))
+        .catch(err => console.log(err))
+        await dispatch(getApplicationListThunk())
         .catch(err => console.log(err))
     }
 

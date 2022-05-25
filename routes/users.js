@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const { token } = require('morgan');
-const router = require('express').Router();   
+const router = require('express').Router(); 
 const User = mongoose.model('User');
+const Response = mongoose.model('Response');
+const Form = mongoose.model('Form');
 const passport = require('passport');
 const utils = require('../utils');
 
@@ -75,6 +77,21 @@ router.post('/update', passport.authenticate('jwt', {session: false}), function(
             const hash = saltHash.hash;
             user.salt = salt;
             user.hash = hash;
+
+            Form.find({ user: req.user }, function(err, forms) {
+                console.log(forms)
+                forms.forEach((item) =>{
+                    item.user = user
+                    item.save()
+                })
+            })
+
+            Response.find({user: req.user}, function(err, responses) {
+                responses.forEach((response) =>{
+                    response.user = user
+                    response.save()
+                })
+            })
 
             user.save()
                 .then((user) =>{

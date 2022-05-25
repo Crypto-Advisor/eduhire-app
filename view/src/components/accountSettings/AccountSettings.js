@@ -28,6 +28,17 @@ const AccountSettings = () =>{
     const handleSubmit = (event) =>{
         event.preventDefault()
         triggerUpdate()
+        document.getElementById("password-update").reset();
+    }
+
+    const handleContact = (event) =>{
+        event.preventDefault()
+        let { email, telegram } = document.forms[1]
+        let emailValue = email.value.toString()
+        let telegramValue = telegram.value.toString()
+
+        
+        
     }
 
     useEffect(() =>{
@@ -43,7 +54,7 @@ const AccountSettings = () =>{
                 </div>
                 <div className='settings-item'>
                     <p><b>Update Password</b></p>
-                    <form>
+                    <form id='password-update'>
                         <div className='login-input-container'>            
                             <label>Username </label>
                             <input className='login' type="text" name="uname" required />
@@ -73,7 +84,7 @@ const AccountSettings = () =>{
                             <input className='login' type="text" name="telegram" />
                         </div>
                         <div className='button-container'>
-                            <button >Update</button>
+                            <button onClick={handleContact}>Update</button>
                         </div>
                     </form>
                 </div>

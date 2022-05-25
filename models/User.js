@@ -4,6 +4,14 @@ const UserSchema = new mongoose.Schema({
     username: String,
     hash: String,
     salt: String,
+    email: {
+        type: String,
+        required: false
+    },
+    telegram: {
+        type: String,
+        required: false
+    },
     admin: Boolean
 })
 
