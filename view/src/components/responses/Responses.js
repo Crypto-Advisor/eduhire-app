@@ -18,16 +18,20 @@ const Responses = () =>{
 
     const handleSubmit = (event) =>{
         event.preventDefault();
+        const modal = document.querySelector(".modal");
+        modal.classList.toggle("show-modal");
     }
 
     useEffect(() =>{
         fetchResponses()
     }, [id])
 
+
     return(
         <div className='responses-container'>
             <div className='responses-sub'>
                 {
+                    responses.length == 0 ? <h1>No Responses</h1> :
                     loaded ? responses?.map((item) =>(
                         <div key={item._id} className='job-post-container'>
                             <div className='job-title'>
@@ -41,6 +45,19 @@ const Responses = () =>{
                             </div>
                             <div>
                                 <button onClick={handleSubmit} id='jbutton'>Contact</button>
+                            </div>
+                            <div className='modal'>
+                                <span className='modal-content'>
+                                    <div>
+                                        <span className="close-button" onClick={handleSubmit}>&times;</span>
+                                    </div>
+                                    <div>
+                                        <p><b>Email: </b> {item.user.email}</p>
+                                    </div>
+                                    <div>
+                                        <p><b>Telegram: </b> {item.user.telegram}</p>
+                                    </div>
+                                </span>
                             </div> 
                         </div>
                     )) : <h1>Loading...</h1>
