@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUserThunk, updateUserThunk } from './AccountSettingsSlice';
+import { fetchUserThunk, updateUserThunk, setContactThunk } from './AccountSettingsSlice';
 
 import './styles.css';
 
@@ -31,14 +31,20 @@ const AccountSettings = () =>{
         document.getElementById("password-update").reset();
     }
 
+    const triggerContact = (data) =>{
+        dispatch(setContactThunk(data))
+    }
+
     const handleContact = (event) =>{
         event.preventDefault()
         let { email, telegram } = document.forms[1]
         let emailValue = email.value.toString()
         let telegramValue = telegram.value.toString()
-
-        
-        
+        triggerContact({
+            email: emailValue, 
+            telegram: telegramValue
+        })
+        document.getElementById("contact-update").reset();
     }
 
     useEffect(() =>{
@@ -74,7 +80,7 @@ const AccountSettings = () =>{
                 </div>
                 <div className='settings-item'>
                     <p><b>Contact Information</b></p>
-                    <form>
+                    <form id='contact-update'>
                         <div className='login-input-container'>            
                             <label>Email </label>
                             <input className='login' type="email" name="email" required />

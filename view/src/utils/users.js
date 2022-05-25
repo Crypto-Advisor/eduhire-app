@@ -26,6 +26,15 @@ export const updateUser = (token, data) => {
     return req.then(response => response.data);
 }
 
+export const setContact = (token, data) =>{
+    const req = axios.post(`${S_PORT}${baseUrl}/setContact`, {data}, {
+        headers: {
+            'Authorization': token
+        }
+    })
+    return req.then(response => response.data);
+}
+
 export const authenticate = (token) => {
     console.log(token)
     const req = axios.get(`${S_PORT}${baseUrl}/authenticate`, {

@@ -79,7 +79,6 @@ router.post('/update', passport.authenticate('jwt', {session: false}), function(
             user.hash = hash;
 
             Form.find({ user: req.user }, function(err, forms) {
-                console.log(forms)
                 forms.forEach((item) =>{
                     item.user = user
                     item.save()
@@ -105,6 +104,43 @@ router.post('/update', passport.authenticate('jwt', {session: false}), function(
         .catch((err) => next(err));
 
 
+
+});
+
+router.post('/setContact', passport.authenticate('jwt', {session: false}), function(req, res, next){
+    const {email, telegram} = req.body.data
+
+    User.findOne({ username: req.user.username })
+        .then((user) =>{
+            if(email){
+                user.email = email
+            }
+            if(telegram){
+                user.telegram = telegram
+            }
+
+            Form.find({ user: req.user }, function(err, forms) {
+                forms.forEach((item) =>{
+                    item.user = user
+                    item.save()
+                })
+            })
+
+            Response.find({user: req.user}, function(err, responses) {
+                responses.forEach((response) =>{
+                    response.user = user
+                    response.save()
+                })
+            })
+
+            user.save()
+                .then((user) =>{
+                    res.json({success: true, user: user });
+                })
+                .catch((err) => next(err));
+
+        })
+        .catch((err) => next(err));
 
 });
 

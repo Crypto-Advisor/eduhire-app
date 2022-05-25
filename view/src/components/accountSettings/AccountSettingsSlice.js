@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { updateUser } from "../../utils/users";
+import { updateUser, setContact } from "../../utils/users";
 
 const initialState = {
     user: {},
@@ -11,6 +11,15 @@ export const fetchUserThunk = createAsyncThunk(
     'accountsettings/fetchUser',
     async() =>{
         return JSON.parse(localStorage.user)
+    }
+)
+
+export const setContactThunk = createAsyncThunk(
+    'accountsettings/setContact',
+    async(data) =>{
+        const response = await setContact(localStorage.token, data);
+        console.log(response)
+        return response
     }
 )
 
