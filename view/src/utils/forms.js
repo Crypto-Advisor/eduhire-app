@@ -36,7 +36,13 @@ export const updateForm = async (data) => {
     return req.data;
 }
 
-export const removeForm = async (data) => {
-    const req = await axios.delete(`${S_PORT}${baseUrl}/delete`, data)
+export const removeForm = async (token, data) => {
+    console.log(data)
+    const req = await axios.delete(`${S_PORT}${baseUrl}/delete`, {
+        headers: {
+            'Authorization': token
+        },
+        data
+    })
     return req.data;
 }

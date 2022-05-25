@@ -20,6 +20,6 @@ router.put('/add', passport.authenticate('jwt', {session: false}), create);
 
 router.post('/update', update);
 
-router.delete('/delete', remove);
+router.delete('/delete', passport.authenticate('jwt', {session: false}), remove);
 
 module.exports = router;

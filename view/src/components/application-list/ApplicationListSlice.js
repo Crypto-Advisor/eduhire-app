@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchFormsByUsername } from '../../utils/forms';
+import { fetchFormsByUsername, removeForm } from '../../utils/forms';
 
 const initialState = {
     list: [],
@@ -12,6 +12,14 @@ export const getApplicationListThunk = createAsyncThunk(
         const username = JSON.parse(localStorage.user).username
         const listData = await fetchFormsByUsername(username)
         return listData
+    }
+)
+
+export const deleteApplicationThunk = createAsyncThunk(
+    'applicationlist/delete',
+    async(data) =>{
+        const response = await removeForm(localStorage.token, data)
+        console.log(response)
     }
 )
 

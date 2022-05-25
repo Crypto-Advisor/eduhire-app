@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+#dbutton{
+    background-color: lightcoral;
+    border-color: lightcoral;
+    padding: 10px;
+}

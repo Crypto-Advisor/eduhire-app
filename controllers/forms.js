@@ -77,14 +77,17 @@ exports.update = (req, res, next) =>{
 }
 
 exports.remove = (req, res, next) =>{
-    Form.deleteOne({ _id: req.body.id }, function(err, result){
-        if(err){
-            res.send(err)
-        } else{
-            res.send(result)
-        }
-    })
-
+    if(!req.user.hash == req.body.user.hash){
+        res.send({success: false})
+    } else{
+        Form.deleteOne({ _id: req.body._id }, function(err, result){
+            if(err){
+                res.send(err)
+            } else{
+                res.json({success: true, result})
+            }
+        })
+    }
 }
 
 
