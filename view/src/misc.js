@@ -1,1 +1,1 @@
-export const S_PORT = process.env.NODE_ENV === 'production' ? "" : "http://localhost:3000"
+export const S_PORT = process.env.NODE_ENV === 'production' ? "/api/" : "http://localhost:3000"
